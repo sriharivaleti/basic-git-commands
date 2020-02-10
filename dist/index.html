@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Basic Git Commands</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section class="section">
+                <h1 class="capitalize center">Basic Git Commands</h1>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center">Git init</h2>
+                <p><code>git init</code> <em><strong>initializes</strong></em> a <strong>local</strong> <code>git
+                        repository</code>
+                    on your computer.
+                    You do this after you have
+                    <em><strong>created</strong></em> the <code>directory</code> (aka folder) that you want to push to
+                    remote
+                    (<code>Github</code>). Also make
+                    sure that you are actually inside the directory. <code>pwd</code> if you have to!</p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center">git status</h2>
+                <p>When you have <em><strong>added</strong></em> some <strong>files</strong> and filled them with some
+                    content, type the
+                    <code>git status</code>
+                    command in <strong>Terminal</strong>, and hit <code>return</code>. <em><strong>Copy</strong></em>
+                    and
+                    <em><strong>paste</strong></em> this <code>command</code> in
+                    <strong>Terminal</strong>, if you have to!</p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center">git add .</h2>
+                <p>When you are ready to <code>commit</code> your changes locally, type <code>git add .</code> in
+                    <strong>Terminal</strong> and hit
+                    <code>return</code>, if you want to <code>commit</code> all your files and directories
+                    <em><strong>at
+                            once</strong></em>.</p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center"><code>git add</code> pathtofile</h2>
+                <p>If you <em><strong>don't </strong></em>want to <code>commit</code> everything <strong>all</strong>
+                    <em><strong>at
+                            once</strong></em>, you can
+                    add (aka <code>stage</code>)
+                    a <strong>single file</strong>, or <strong>several
+                        files</strong>, individually. </p>
+                <p>If you want to add more than one file, you can type <code>git add pathtofile pathtofile</code>, etc.
+                    The great
+                    thing about <code>git status</code> is, that it returns the files that either have been
+                    <em><strong>newly
+                            created</strong></em> and <strong>never staged</strong> or
+                    <em><strong>committed</strong></em>, or the files that have
+                    been modified,
+                    <em><strong>including</strong></em> the <code>path</code> to
+                    the file!</p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase"><code>git status</code>: screenshot</h2>
+                <div class="image-wrapper">
+                    <img src="assets/images/git-status.png" alt="screenshot of git status command in Terminal" />
+                </div>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center"><code>git add pathtofile</code> revisited</h2>
+                <pre><code data-shell noescape>
+git add index.html
+                </code></pre>
+                <p>You could also do something like</p>
+                <pre><code data-shell noescape>
+git add index.html form.html
+                </code></pre>
+                <p>if there was <em><strong>another</strong></em> new, <strong>un-tracked file</strong> to
+                    <code>add</code>, and
+                    another, and so on.
+                </p>
+                <p>New, <strong>un-tracked files</strong> always
+                    <strong>appear</strong> <code>red</code>, and newly
+                    <em><strong>modified</strong></em> files also appear <code>red</code>. </p>
+                <p>When a <code>file</code>, or <code>files</code>, have been <em><strong>added </strong></em>to the
+                    <strong>staging area</strong>
+                    with the
+                    <code>git add</code>
+                    command, if you then type execute <code>git status</code>, the <code>file</code> or
+                    <code>files</code> that have
+                    been
+                    <em><strong>added</strong></em> will show up <em><strong>green</strong></em>. That means that
+                    they
+                    are <em><strong>ready</strong></em> to be committed
+                    <strong>locally</strong> (your <strong>computer</strong> as opposed to <strong>remotely</strong> on
+                    <code>Github</code>).</p>
+                <p><strong>Note</strong>: In the <code>screenshot</code> in the <code>previous slide</code>, the file
+                    that was ready
+                    for staging
+                    was NOT a <strong>new</strong> file, but a <strong>modified</strong> one. That meant it had already
+                    been committed at
+                    least once
+                    previously, and was therefore already being <code>"tracked"</code>. <code>"un-tracked"</code> refers
+                    to files
+                    that have never
+                    been added/committed yet.</p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center">git commit</h2>
+                <p>So you have <code>staged</code> your file(s), and they are ready to be committed
+                    <em><strong>locally</strong></em>. There are 2 ways to do this. You can do:</p>
+                <pre><code data-shell noescape>
+git commit -m "My first commit"
+                </code></pre>
+                <p>or you can do:</p>
+                <pre><code data-shell noescape>
+git commit
+                </code></pre>
+                <p>I prefer the second way, because it <em><strong>separates</strong></em> concerns. First I type the
+                    <code>git commit</code> command, which
+                    takes me into <code>vim</code>, a cool <strong>text editor</strong> which comes with most <code>UNIX
+                        systems</code> and with
+                    <code>Apple OS X</code>. I love using it for <code>git commit</code> messages. Why? Because it is
+                    easy to use, and allows you to create <strong>multi-line messages</strong>,
+                    <em><strong></strong>if</em> you want.</p>
+                <p>You probably want to keep your commit messages to <code>~50</code> characters or less
+                    <em><strong>long</strong></em>, but it's
+                    nice
+                    to have options!
+                </p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center">git remote add (origin, remoteurl)</h2>
+                <p>So you have <em><strong>committed</strong></em> your <code>new local repository</code> on your
+                    computer. Now you
+                    are ready to <code>push</code> it to
+                    <code>remote origin</code>. <code>remote origin</code> refers to the <strong>remote</strong> hosting
+                    service you are
+                    using to
+                    <em><strong>host</strong></em> your <code>repositories</code> <em><strong>remotely</strong></em>.
+                </p>
+                <p><code>origin</code> does not even
+                    have to be
+                    <code>origin</code>. For example, if you
+                    <em><strong>push</strong></em> your <code>repository</code> to a hosting service called
+                    <strong>Heroku</strong>
+                    for applications with
+                    <code>backend servers/backend databases</code>,
+                    you would use <code>heroku</code> instead of <code>origin</code>. However,
+                    <em><strong>historical</strong></em> <strong>convention</strong> on <code>Github</code> is to use
+                    the <code>origin</code> keyword. </p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center">git remote add origin remoteurl</h2>
+                <p>In order to be able to push your <code>local commits</code> for the <em><strong>first
+                            time</strong></em> to
+                    <code>remote</code>, you have to <em><strong>associate</strong></em> your <code>local
+                        repository</code>
+                    with a <code>remote</code> one. <em><strong>However</strong></em>, before you even can take this
+                    step, you have to make sure
+                    you have a
+                    <code>remote repository</code> to <code>push</code> to!
+                </p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center">creating a <strong>remote repository</strong> on Github</h2>
+                To create a <code>remote</code> repository on <strong>Github</strong>, go to your
+                <strong>Github</strong> profile, click
+                on the
+                <strong>Repositories</strong> tab, and
+                then the green <strong>New</strong> button that appears to the right of the "Find a repository"
+                <strong>search
+                    bar</strong>. This will take you to <code>https://github.com/new</code>, where you will create your
+                <em><strong>new</strong></em>
+                repository.
+            </section>
+            <section class="section">
+                <h2 class="lowercase">Creating a remote repository on Github: screenshot</h2>
+                <div class="image-wrapper">
+                    <img src="assets/images/create-remote-repo.png"
+                        alt="screenshot of creating a remote repository on Github" />
+                </div>
+            </section>
+            <section class="section">
+                <h2 class="lowercase">Creating a repository: repository name</h2>
+                <p>The <em><strong>first step</strong></em> to creating a remote repository on <code>Github</code> is to
+                    <em><strong>fill out</strong></em> the
+                    <code>repository</code> <strong>name field</strong>
+                    with a <strong>repo name</strong> of your choosing. When I created the <code>remote
+                    </code>repository for housing
+                    the <code>local</code>
+                    repository of this <strong>slide deck</strong>, I input the following in the <code>repository</code>
+                    name field:
+                </p>
+                <pre><code data-shell noescape>
+basic-git-commands
+                </code></pre>
+                <p>It is <em><strong>best practice</strong></em> to create a <strong>repository name</strong> using
+                    <code>hyphens</code>
+                    (-) between
+                    words. <code>Github</code> might not even accept other <strong>character conventions</strong> such
+                    as <code>_</code>.
+                    I have tried
+                    it, and <code>Github</code> did not like it at all, so I had to <em><strong>rename</strong></em> the
+                    repo.</p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase">create repository</h2>
+                <p>To create your <em><strong>new repository</strong></em>, click on the <strong>green</strong>
+                    <code>create
+                        repository</code> button.</p>
+            </section>
+            <section class="section">
+                <h2>
+                    <h2 class="lowercase">Create repository outcome: screenshot</h2>
+                    <img src="assets/images/create-repo-outcome.png" alt="create repo outcome screenshot" />
+                </h2>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center"><code>git remote add origin remoteurl</code> revisited: <code>SSH</code>
+                </h2>
+                <p>In order to push my <em><strong>local</strong></em> <code>test-repo</code> to <strong>Github</strong>
+                    <code>remote</code>, I would do the
+                    following in
+                    <strong>Terminal</strong>:</p>
+                <pre><code data-shell noescape>
+git remote add origin git@github.com:interglobalmedia/test-repo.git
+                </code></pre>
+                <p><code>origin</code> is the <em><strong>first argument</strong></em> passed to the <code>git remote
+                        add</code>
+                    command, and
+                    <code>git@github.com:interglobalmedia/test-repo.git</code> is the <em><strong>second
+                            argument</strong></em>. It is the <code>remote
+                        url</code> of <code>test-repo</code>
+                    on <strong>Github</strong>. In fact, it's the <code>remote
+                        url</code> using the <code>SSH</code> protocol as opposed to the
+                    <code>HTTPS</code> protocol as
+                    shown in the screenshot on the previous slide. That's because I configured my
+                    <strong>Github</strong> account to use <code>SSH</code>. <code>SSH</code> stands for <code>Secure
+                        Shell</code>.
+                    For those of
+                    you who are
+                    interested, I have created a <strong>slide deck</strong> on how to set up your
+                    <strong>Github</strong> account with
+                    <code>SSH</code>. It goes
+                    beyond the scope of this course, but to read the slide deck, please visit
+                    <a href="https://github-setup.interglobalmedia.now.sh/" target="_blank">Getting Set Up on Github
+                        with SSH</a>.
+                </p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center"><code>git remote add origin remoteurl</code> revisited: <code>HTTPS</code>
+                </h2>
+                <p>In order to <code>push</code> my local <code>test-repo</code> to <strong>Github</strong>
+                    <code>remote</code> using
+                    <strong>HTTPS</strong>, I
+                    would do the
+                    following in
+                    <strong>Terminal</strong>:</p>
+                <pre><code data-shell noescape>
+git remote add origin https://github.com/interglobalmedia/test-repo.git
+                </code></pre>
+                <p><code>origin</code> is the <em>first argument</em> passed to the <code>git remote add</code>
+                    command, and
+                    <strong>https://github.com/interglobalmedia/test-repo.git</strong> is the <em>second argument</em>.
+                    It is the
+                    <code>remote
+                        url</code> (HTTPS) of <code>test-repo</code>
+                    on <strong>Github</strong>.</p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center">git push -u</h2>
+                <p>Now that your <code>local</code> repository has been associated with the <code>remote</code>
+                    repository, you are
+                    ready to <code>push</code>
+                    the <code>local</code> repository to <code>remote origin</code>! To do that, type the following
+                    <code>git</code>
+                    command in <strong>Terminal</strong> and
+                    then hit the
+                    <code>return</code> key:</p>
+                <pre><code data-shell noescape>
+git push -u origin master
+                </code></pre>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center"><code>git push -u origin master</code>: breakdown</h2>
+                <p><code>git push</code> basically results in the <em><strong>upload</strong></em> of your <code>local
+                        repository</code> on <strong>Github</strong>. You are
+                    <em><strong>pushing</strong></em> it to your <code>remote origin</code>, which is
+                    <code>Github</code>, and to the
+                    <code>remote
+                        master branch</code> from your <code>local
+                        master branch</code>. <code>branch master</code> is the <em><strong>default</strong></em>
+                    branch that is <strong>created</strong>
+                    <em><strong>locally</strong></em> when you
+                    <code>initialize</code> your
+                    <code>local</code> git repository.</p>
+                <p><code>branch master</code> is also where your <em><strong>production ready</strong></em>
+                    <code>code</code> for
+                    your <code>application</code>
+                    resides.</p>
+                <p>Other <code>branches</code> are created for application features, and when the <code>code</code> has
+                    been <em><strong>reviewed</strong></em>
+                    and <em><strong>accepted</strong></em> by the <code>development team</code>, it is then
+                    <code>merged</code> into
+                    the <code>master
+                        branch</code>.</p>
+                <p><em><strong>Sometimes</strong></em>, the <code>feature branch</code> does
+                    not get <code>merged</code> directly into the <code>master branch</code>, but first to a
+                    <strong><em>development</em></strong>
+                    <code>branch</code> for
+                    further
+                    <code>testing</code>, then a <code>staging branch</code>, for <code>testing</code> on <code>remote
+                        testing
+                        environment
+                        hosting</code>, and
+                    THEN, if all
+                    goes well, <em><strong>merged</strong></em>
+                    into <code>branch master</code>.</p>
+                <p>The <code>-u</code> flag is <strong>used</strong> the <em><strong>first time</strong></em> you
+                    <code>git
+                        push</code> your <em><strong>local repo</strong></em> to
+                    <code>remote</code>. The
+                    <code>-u</code> flag
+                    is the abbreviation for <code>-set-upstream</code>. </p>
+            </section>
+            <section class="section">
+                <h2 class="lowercase center"><code>git push -u origin master</code>: success!</h2>
+                <div class="image-wrapper">
+                    <img src="assets/images/git-push-u-origin-master.png"
+                        alt="screenshot of the complete creation cycle of a git repository" />
+                </div>
+            </section>
+            <section class="section">
+                <h2 class="capitalize">Related Resources</h2>
+                <ul>
+                    <li><a href="https://www.git-tower.com/learn/git/commands/git-commit">Git Commands: An
+                            overview of the most important Git commands</a>: <strong>git-tower.com
+                        </strong></li>
+                    <li><a
+                            href="https://stackoverflow.com/questions/13507430/git-commit-in-terminal-opens-vim-but-cant-get-back-to-terminal">Git
+                            commit in terminal opens VIM, but can't get back to terminal</a>:
+                        <strong>stackoverflow</strong>
+                    </li>
+                    <li><a href="https://www.vim.org/">vim.org</a></li>
+                    <li><a
+                            href="https://articles.assembla.com/en/articles/1136998-how-to-add-a-new-remote-to-your-git-repo">How
+                            to Add a New Remote to your Git Repo</a>
+                    </li>
+                    <li><a href="https://git-scm.com/docs/git-commit">git-commit</a>: <strong>git-scm.com</strong></li>
+                    <li><a href="https://www.jquery-az.com/git-push-command/">The Purpose of Git Push command</a></li>
+                    <li><a href="https://www.atlassian.com/git">Getting Git Right</a>: <strong>Atlassian</strong></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            hash: true,
+            dependencies: [{
+                    src: 'plugin/markdown/marked.js'
+                },
+                {
+                    src: 'plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'plugin/highlight/highlight.js'
+                },
+                {
+                    src: 'plugin/notes/notes.js',
+                    async: true
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
